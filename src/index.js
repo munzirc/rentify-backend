@@ -24,9 +24,9 @@ mongoose.connect(mongoURI)
 const app = express();
 
 app.use(express.json());
-app.use(cors({credentials:true, origin:'https://rentify-frontend-7xmf.onrender.com'}));
+app.use(cors({credentials:true, origin: process.env.ALLOWED_ORIGIN}));
 app.use(cookieParser());
-
+// 'https://rentify-frontend-7xmf.onrender.com'
 
 app.get('/health', async (req, res) => {
      res.json({message: "health OK!"})

@@ -36,12 +36,6 @@ const register = async (req, res) => {
 
     const { password: pass, ...rest } = newUser._doc;
 
-    res.cookie("access_token", token, {
-      httpOnly: true,
-      secure: true,
-      maxAge: 3600000,
-    });
-
     return res.status(201).json({...rest, token});
   } catch (error) {
     console.log(error.message);
@@ -68,12 +62,6 @@ const login = async (req, res) => {
 
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
     expiresIn: "1h",
-  });
-
-  res.cookie("access_token", token, {
-    httpOnly: true,
-    secure: true,
-    maxAge: 3600000,
   });
 
   return res.status(200).json({...rest, token});
