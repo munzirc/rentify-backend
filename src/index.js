@@ -24,7 +24,7 @@ mongoose.connect(mongoURI)
 const app = express();
 
 app.use(express.json());
-app.use(cors({credentials:true, origin:'https://rentify-frontend-7xmf.onrender.com'}));
+app.use(cors({credentials:true, origin:['https://rentify-frontend-7xmf.onrender.com', 'http://localhost:5173/']}));
 app.use(cookieParser());
 
 
